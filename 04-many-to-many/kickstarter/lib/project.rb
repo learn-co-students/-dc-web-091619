@@ -5,13 +5,24 @@ class Project
     @title = title
   end
 
+  def commitments
+    BackedProject.all.select do |backed_project|
+      backed_project.project == self
+    end
+  end
+
   def backers
-    Backer.all.select do |backer|
-      backer.backed_projects.include?(self)
+    # where is the data?
+    # BackedProject.all
+    # how do we transform it?
+    # select the ones that belong to this project
+    # map to the backers
+    commitments.map do |backed_project|
+      backed_project.backer
     end
   end
 
   def add_backer(backer)
-    backer.backed_projects << self
+    BackedProject.new(backer, self)
   end
 end

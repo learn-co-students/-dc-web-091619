@@ -1,10 +1,9 @@
 class Backer
-  attr_reader :name, :backed_projects
+  attr_reader :name
   @@all = []
 
   def initialize(name)
     @name = name
-    @backed_projects = []
     @@all << self
   end
 
@@ -12,8 +11,26 @@ class Backer
     @@all
   end
 
+  def commitments
+    # where is the data?
+    # BackedProject.all
+    # how do we transform it?
+    # select the projects for this backer
+
+    BackedProject.all.select do |backed_project|
+      backed_project.backer == self
+    end
+  end
+
+  def backed_projects
+    # map the backed projects to projects
+    commitments.map do |backed_project|
+      backed_project.project
+    end
+  end
+
   def back_project(project)
-    @backed_projects << project
+    BackedProject.new(self, project)
   end
 end
 
