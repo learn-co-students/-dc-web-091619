@@ -1,0 +1,12 @@
+require_relative 'config/environment'
+
+# Rake is a popular task runner in Ruby
+# Rake centralizes access to your tasks
+# https://www.rubyguides.com/2019/02/ruby-rake/
+
+desc 'Loads up a console'
+task :console do
+  Pry.start
+end
+
+# write another!
