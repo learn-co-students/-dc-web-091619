@@ -5,6 +5,5 @@ require 'pry'
 db = SQLite3::Database.new('chinook.db')
 
 
-testing
 
 

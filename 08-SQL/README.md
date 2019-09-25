@@ -50,17 +50,6 @@
 
 ```
 
-9. Write the SQL to display artist name, album name and number of tracks on that album
-
-```sql
-
-```
-
-10. Write the SQL to return the name of all of the artists in the 'Pop' Genre
-
-```sql
-
-```
 
 ## BONUS (very hard)
 
@@ -73,3 +62,35 @@
 ```sql
 
 ```
+
+
+
+
+
+
+Write the SQL to return all of the rows in the artists table?
+  SELECT * FROM artists;
+
+Write the SQL to select the artist with the name "Black Sabbath"
+  SELECT name FROM artists WHERE name = "Black Sabbath";
+
+Write the SQL to create a table named 'fans' with an autoincrementing ID that's a primary key and a name field of type text
+  CREATE TABLE fans (
+    id INTEGER PRIMARY KEY,
+    name TEXT
+  );
+
+Write the SQL to alter the fans table to have a artist_id column type integer?
+  ALTER TABLE fans ADD COLUMN artist_id INTEGER
+
+Write the SQL to add yourself as a fan of the Black Eyed Peas? ArtistId 169
+  INSERT INTO fans (id, name, artist_id) VALUES (4, "SHU", 169)
+
+Write the SQL to return fans that are not fans of the black eyed peas.
+  SELECT * FROM fans WHERE artist_id IS NOT 169
+
+Write the SQL to display an artists name next to their album title
+SELECT artists.name, albums.title FROM artists INNER JOIN albums ON albums.artist_id = artists.id
+
+
+
