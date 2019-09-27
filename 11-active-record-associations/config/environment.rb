@@ -1,6 +1,7 @@
 # Setting up the application
 require 'bundler/setup'
 Bundler.require
+# set :database_file, "./database.yml"
 
 # require 'sinatra/activerecord'
 
