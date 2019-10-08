@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Index Page</title>
+</head>
+<body>
+
+    <% @books.each do |book| %>
+        <div><a href="/books/<%= book.id %>"><%= book.title %></a></div>
+    <% end %>
+
+
+</body>
+</html>
