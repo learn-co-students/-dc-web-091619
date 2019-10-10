@@ -22,9 +22,9 @@ class BooksController < Sinatra::Base
 
     post "/books" do 
         title = params[:title]
-        author = params[:author]
+        author_id = params[:author]
         snippet = params[:snippet]
-        @book = Book.create(title: title, author: author, snippet:snippet)
+        @book = Book.create(title: title, author_id: author_id, snippet:snippet)
         redirect "/books/#{@book.id}"
         # redirect "http://www.google.com"
     end
