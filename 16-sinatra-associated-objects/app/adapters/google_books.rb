@@ -4,8 +4,8 @@ module GoogleBooks
 
     attr_reader :author
 
-    def initialize(author)
-      @author = author
+    def initialize(author_name)
+      @author = Author.find_or_create_by(name: author_name)
     end
 
     def fetch_books
@@ -24,11 +24,11 @@ module GoogleBooks
     private
 
     def author_url(max_results = 20)
-      "#{BASE_URL}#{author_sanitizer(author)}&maxResults=#{max_results}"
+      "#{BASE_URL}#{author_sanitizer(self.author.name)}&maxResults=#{max_results}"
     end
 
-    def author_sanitizer(author)
-      author.gsub(/\W+/, '').downcase
+    def author_sanitizer(author_name)
+      author_name.gsub(/\W+/, '').downcase
     end
   end
 end
