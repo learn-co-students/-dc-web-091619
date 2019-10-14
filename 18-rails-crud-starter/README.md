@@ -4,3 +4,9 @@
     - Use Rails link helpers to build links
     - Use `rails routes` to abstract URLs
     - Use "before" actions to minimize repeated code
+
+* Questions
+    - Rails generators, how do we use them?
+    - Migrations
+    - form_for vs form_tag vs form_with
+    - form params
