@@ -1,2 +1,8 @@
-<h1>Retailers#show</h1>
-<p>Find me in app/views/retailers/show.html.erb</p>
+<h2><%= @retailer.name %></h2>
+
+<ul>
+    <% @retailer.snacks.each do |snack| %>
+    <% byebug %>
+        <li><%= link_to snack.name, snack_path(snack) %></li>
+    <% end %>
+</ul>
