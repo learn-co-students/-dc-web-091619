@@ -2,7 +2,7 @@
 
 <div>Calories: <%= @snack.calories %></div>
 <div>Deliciousness: <%= @snack.deliciousness %></div>
-<div>Made by: <%= @snack.retailer.name %> </div>
+<div>Made by: <%= link_to @snack.retailer.name, retailer_path(@snack.retailer) %> </div>
 <!-- <a href="/snacks">Back to Index Page</a> -->
 <%= link_to "Edit this snack", edit_snack_path(@snack) %>
 <%= link_to "Home Page", home_path %>
