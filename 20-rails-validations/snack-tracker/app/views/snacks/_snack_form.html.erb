@@ -8,7 +8,7 @@
     <%= f.label :deliciousness %>
     <%= f.select :deliciousness, (1..10) %>
     <%= f.label :retailer %>
-    <%= f.collection_select :retailer_id, Retailer.all, :id, :x %>
+    <%= f.collection_select :retailer_id, Retailer.all, :id, :name %>
     <%# object we're making (implied), field to fill in, collection to include,
         value (id), text to display %>
     <%= f.submit "Snackify" %>
