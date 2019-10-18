@@ -1,0 +1,7 @@
+<h1>Detail page for <%= "#{@student.first_name} #{@student.last_name}" %></h1>
+
+<h3>Year: <%= @student.year %></h3>
+
+<h3>House: <%= @student.house.name %></h3>
+
+<button><%= link_to "Delete this student", student_path(@student), method: 'delete' %></button>

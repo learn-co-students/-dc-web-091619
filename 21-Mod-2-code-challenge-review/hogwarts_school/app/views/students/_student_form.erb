@@ -1,0 +1,21 @@
+<% if @student.errors.any? %>
+    <% @student.errors.full_messages.each do |msg| %>
+        <%= msg %>
+    <% end %>
+<% end %>
+
+<%= form_for @student do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %><br /><br />
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %><br /><br />
+
+    <%= f.label :year %>
+    <%= f.number_field :year, {min: 1, max: 7} %><br /><br />
+
+    <%= f.label :house %>
+    <%= f.collection_select :house_id, House.all, :id, :name %><br /><br />
+
+    <%= f.submit %>
+<% end %>
