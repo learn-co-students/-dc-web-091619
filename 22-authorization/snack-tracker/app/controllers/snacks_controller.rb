@@ -1,6 +1,7 @@
 class SnacksController < ApplicationController
 
     before_action :find_snack, only: [:show, :edit, :update]
+    before_action :authorized
     
     def home
     end
