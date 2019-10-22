@@ -1,0 +1,10 @@
+<h1>Detail page for <%= @house.name %></h1>
+
+<h3>Description: <%= @house.description %></h3>
+
+<h3>Students Assigned to <%= @house.name %></h3>
+
+
+<% @house.students.each do |student| %>
+    <h3><%= link_to student.first_name, student_path(student)%></h3>
+<% end %>
