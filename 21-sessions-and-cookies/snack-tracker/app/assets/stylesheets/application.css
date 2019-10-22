@@ -18,3 +18,15 @@
     display: inline;
     color: red;
 }
+
+.header {
+    background-color: #cc8899;
+}
+
+.header div {
+    display: inline;
+}
+
+.right {
+    float: right;
+}

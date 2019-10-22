@@ -10,6 +10,15 @@
   </head>
 
   <body>
+    <div class="header">
+      <% if session[:user_id] %>
+          <div class="left">Welcome <%= current_user.display_name %></div>
+          <div class="right"><%= link_to "Logout", logout_path %></div>
+      <% else %>
+          <%= link_to "Login", login_path %>
+      <% end %>
+    </div>
+
     <%= yield %>
   </body>
 </html>
