@@ -1,0 +1,19 @@
+
+.grand-canyon-image {
+    float: left;
+    margin: 20px;
+    /* border: solid blue 2px; */
+}
+
+.wrapper {
+    width: 960px;
+    margin: 0px auto;
+    background-color: white;
+    padding: 40px;
+    border: 2px solid black;
+}
+
+
+.article-body {
+    /* border: solid green 2px */
+}

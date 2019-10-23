@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>National Parks</title>
+
+  
+  </head>
+
+  <style>
+  
+
+  </style>
+
+  <body>
+      <div id="newbar" class="ui inverted menu">
+          <a class="item" href="/">Home</a>
+          <!-- <a href="/photo_gallery">Image Gallery</a></li> -->
+          <%= link_to "Image Gallery", photo_gallery_path, class: "item" %>
+          <i id="american_sign" class="american sign language interpreting icon"></i>
+      </div>
+
+
+   
+    <!-- apply header -->
+    <!-- apply id -->
+    <div class="header">
+      <h1 id="home-page-title"> US National Parks </h1>
+    </div>
+
+    <!-- apply box model -->
+    <div class="intro">
+      <p>The United States has 60 protected areas known as national parks that are operated by the National Park Service, an agency of the Department of the Interior. National parks must be established by an act of the United States Congress. Criteria for the selection of national parks include natural beauty, unique geological features, unusual ecosystems, and recreational opportunities (though these criteria are not always considered together).</p>
+    </div>
+
+    <div>
+      <h2>Featured Park: The Grand Canyon</h2>
+      <button class="btn"><%= link_to "Visit the Grand Canyon", grand_canyon_path %></button>
+    </div>
+
+    <div>
+      <p>Thanks for visiting the parks page!</p>
+    </div>
+  </body>
+</html>
