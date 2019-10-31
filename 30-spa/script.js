@@ -1,64 +1,76 @@
-// document.addEventListener("DOMContentLoaded", function(){
-//   console.log('DOM loaded')
-// });
+
+
+// When <some event happens> I want to make <this type of fetch call>
+// and <manipulate the DOM in this way>
+
 
 document.addEventListener("DOMContentLoaded", function(){
-  gottaFetchEmAll()
-  getForm().addEventListener("submit", submitHandler)
+    gottaFetchEmAll()
+    getForm().addEventListener("submit", submitHandler)
 });
 
-function gottaFetchEmAll() {
-    fetch("http://localhost:3000/pokemon")
-        .then( response => response.json() )
-        .then( pokemonArray => {
-            pokemonArray.forEach(pokemon => renderPokemon(pokemon))
-        })
-}
-
-function renderPokemon(pokemon){
-    let container = document.getElementById("pokemon-container")
-    let pokemonCard = document.createElement("div")
-    pokemonCard.id = `pokemon-${pokemon.id}`
-    pokemonCard.classList.add("card")
-    let header = document.createElement("h3")
-    header.innerText = pokemon.name
-    pokemonCard.appendChild(header)
-    let image = document.createElement("img")
-    image.src = pokemon.sprite
-    pokemonCard.appendChild(image)
-    container.appendChild(pokemonCard)
-    pokemonCard.addEventListener("click", deletePokemon)
-}
 
 function getForm() {
     return document.querySelector("form")
 }
 
-function submitHandler(e) {
-    e.preventDefault()
-    postPokemon()
-    getForm().reset()
+function gottaFetchEmAll() {
+
+    fetch("http://localhost:3000/pokemon")
+        .then( response => response.json())
+        .then( pokemonArray =>{
+            pokemonArray.forEach( pokemon => renderPokemon(pokemon) )
+        })
 
 }
 
-function postPokemon(){
-    let data = {"name": document.querySelector("#name-input").value ,
-                "sprite": getForm()[1].value} // two ways to do the same thing
-    console.log(data)
-    fetch('http://localhost:3000/pokemon', {
+function renderPokemon(pokemon) {
+    // As a User, I can see all the Pokemon
+    // When the page loads, I want to make a GET request to /pokemon,
+    // and render all the Pokemons to the screen
+    let pokemonContainer = document.getElementById("pokemon-container")
+    let pokemonCard = document.createElement("div")
+    pokemonCard.classList.add("card")
+    pokemonCard.id = `pokemon-${pokemon.id}`
+    let header = document.createElement("h3")
+    header.innerText = pokemon.name
+    pokemonCard.appendChild(header)
+    pokemonContainer.appendChild(pokemonCard)
+    let pokemonImage = document.createElement("img")
+    pokemonImage.src = pokemon.sprite
+    pokemonCard.appendChild(pokemonImage)
+    pokemonCard.addEventListener("click", deletePokemon)
+}
+
+function submitHandler(event) {
+    // As a User, I can add a Pokemon with a form and render it to the page
+    // When user submits the form, I want to make a POST fetch to /pokemon
+    // and add a new Pokemon card
+    event.preventDefault()
+    let new_name = document.querySelector("#name-input").value 
+    let new_sprite = document.querySelector("#sprite-input").value 
+    let data = {name: new_name, sprite: new_sprite}
+    fetch("http://localhost:3000/pokemon", {
         method: "POST",
+        body: JSON.stringify(data),
         headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
+            'Content-Type': 'application/json'
+        }
     }).then(res => res.json())
-    .then(data => renderPokemon(data))
+    .then(pokemon => renderPokemon(pokemon))
+    getForm().reset()
 }
 
-function deletePokemon(event){
-    let id = event.currentTarget.id.split("-")[1]
+function deletePokemon(event) {
+    // As a User, I can delete a Pokemon by clicking on it
+
+    // When a user clicks on a pokemon card, I want to make a DELETE fetch to /pokemon/:id
+    // and removes pokemon from the page 
+    let card = event.currentTarget
+    let id = card.id.split("-")[1]
     fetch(`http://localhost:3000/pokemon/${id}`, {
         method: "DELETE"
-    })
-    event.currentTarget.remove()
+    }).then(() => card.remove())
+    .catch(() => alert("Server Error"))
 }
+
