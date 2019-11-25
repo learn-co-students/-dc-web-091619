@@ -1,0 +1,31 @@
+Thinking in React 
+
+
+
+Step 1: Break the UI into a Component Hierarchy
+- The First thing you'll want to do is draw boxes around every component.
+- How do you know what should be its own component?
+
+
+
+Now That We've identified the components in our Mock, Let's arrange them into a hierachy.
+
+
+
+STEP 2: Build A Static Version in React
+
+
+
+
+
+
+
+Step 3: Identify the minimal Representation of UI state. 
+- So lets brainstorm what things we want to put in state.
+
+
+
+
+
+
+Step 4: Identify Where Your State Should Live
